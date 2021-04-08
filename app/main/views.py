@@ -18,7 +18,7 @@ def index():
                 send_email(app.config['FLASKY_ADMIN'], 'New User', 'mail / new_user', user=user)
         else:
             session['known'] = True
-        session['name'] = form.name.data
-        form.name.data = ''
-        return redirect(url_for('.index'))
+            session['name'] = form.name.data
+            form.name.data = ''
+            return redirect(url_for('.index'))
     return render_template('index.html', form=form, name=session.get('name'), known=session.get('known', False), current_time=datetime.utcnow())
